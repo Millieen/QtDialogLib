@@ -17,6 +17,9 @@ enum DialogLibErroCode{
 extern "C"  {
 #endif
 DialogLibErroCode WINAPI Initialize(const char* resourcefilename = NULL);
+DialogLibErroCode WINAPI Finalize();
+
+int WINAPI ShowMessageDialog(const char* title = NULL, const char* message = NULL);
 
 #ifdef __cplusplus
 }

@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/dialoglib">
         <file>zh_CH.qm</file>
+        <file>icon-a.png</file>
+        <file>icon-default.png</file>
+        <file>stylesheet.qss</file>
     </qresource>
 </RCC>
