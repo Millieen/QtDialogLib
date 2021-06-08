@@ -10,9 +10,14 @@ CONFIG += staticlib
 
 INCLUDEPATH += $$_PRO_FILE_PWD_/../include
 
-SOURCES += $$_PRO_FILE_PWD_/../src/dialoglib.cpp
+SOURCES += $$_PRO_FILE_PWD_/../src/dialoglib.cpp \
+    $$_PRO_FILE_PWD_/../src/messagedialog.cpp
 
-HEADERS += $$_PRO_FILE_PWD_/../include/dialoglib.h
+HEADERS += $$_PRO_FILE_PWD_/../include/dialoglib.h \
+    $$_PRO_FILE_PWD_/../src/messagedialog.h
+
+FORMS += \
+    $$_PRO_FILE_PWD_/../src/messagedialog.ui
 
 RESOURCES += \
      $$_PRO_FILE_PWD_/../resources/dialoglib.qrc

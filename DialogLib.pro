@@ -3,4 +3,5 @@ TEMPLATE = subdirs
 SUBDIRS += \
     dynamic \
     static \
-    testforqt
+    testforqt \
+    testforc

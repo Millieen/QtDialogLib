@@ -1,0 +1,4 @@
+QLabel#label_image
+{
+    border-image: url(":/dialoglib/icon-a.png");
+}

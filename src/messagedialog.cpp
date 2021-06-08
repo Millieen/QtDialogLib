@@ -2,6 +2,9 @@
 #include "ui_messagedialog.h"
 
 #include <QDialog>
+#include <QImage>
+#include <QDebug>
+
 MessageDialog::MessageDialog(QString title, QString message, DialogType type, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MessageDialog)
@@ -26,6 +29,12 @@ MessageDialog::MessageDialog(QString title, QString message, DialogType type, QW
 
     setWindowTitle(title);
     ui->label_message->setText(message);
+
+    QImage image(":/dialoglib/icon-default.png");
+    ui->label_image->setMinimumSize(image.size());
+    qDebug() << ui->label_image->size();
+    adjustSize();
+    qDebug() << ui->label_image->size();
 }
 
 MessageDialog::~MessageDialog()
@@ -35,8 +44,11 @@ MessageDialog::~MessageDialog()
 
 int MessageDialog::exec()
 {
+    setAttribute(Qt::WA_ShowModal, true);
+    show();
     m_eventloop = new QEventLoop();
     m_eventloop->exec();
+    m_eventloop = NULL;
     return m_result;
 }
 

@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include "dialoglib.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,16 +17,17 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::on_pushButton_initialize_clicked()
-{
-    Initialize();
+{    
+    qDebug() << "Initialize() return " << Initialize();
 }
 
 void MainWindow::on_pushButton_showmessagedialog_clicked()
 {
-
+    int ret = ShowMessageDialog();
+    qDebug() << "ShowMessageDialog() return "<<ret;
 }
 
 void MainWindow::on_pushButton_finalize_clicked()
 {
-    Finalize();
+    qDebug() << "Finalize() return " << Finalize();
 }

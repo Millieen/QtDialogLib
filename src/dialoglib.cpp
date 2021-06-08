@@ -4,12 +4,26 @@
 #include <QApplication>
 #include <QResource>
 #include <QObject>
+#include <QApplication>
+#include <QDebug>
 
 #include "messagedialog.h"
 
-QString m_resourcefilename;
+static QString m_resourcefilename;
+static QApplication* libApp = NULL;
+static int argc = 1;
+static char* argv[] = {"", NULL};
+
 DialogLibErroCode WINAPI Initialize(const char* resourcefilename)
 {
+    //check application
+    libApp = qApp;
+    if(libApp == NULL)
+    {
+        libApp = new QApplication(argc, argv);
+        libApp->setQuitOnLastWindowClosed(false);
+    }
+
     if(resourcefilename == NULL || strlen(resourcefilename) <= 0)
     {
         Q_INIT_RESOURCE(dialoglib);
@@ -22,8 +36,20 @@ DialogLibErroCode WINAPI Initialize(const char* resourcefilename)
         {
             m_resourcefilename = QCoreApplication::applicationDirPath() + "/" + resourcefilename;
         }
+        qDebug() << m_resourcefilename << " exists:"<<QFile(m_resourcefilename).exists();
         QResource::registerResource(m_resourcefilename);
     }
+
+    //load translation
+
+    //load stylesheet
+    QFile stylefile(":/dialoglib/stylesheet.qss");
+    stylefile.open(QFile::ReadOnly);
+    QString stylesheet = stylefile.readAll();
+    libApp->setStyleSheet(stylesheet);
+    stylefile.close();
+
+
     return UI_SUCCESSED;
 }
 
@@ -35,7 +61,7 @@ DialogLibErroCode WINAPI Finalize()
     }
     else
     {
-        Q_CLEANUP_RESOURCE(m_resourcefilename);
+        QResource::unregisterResource(m_resourcefilename);
     }
     return UI_SUCCESSED;
 }

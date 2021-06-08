@@ -1,0 +1,1 @@
+rcc -binary otherresource.qrc -o otherresource.rcc
