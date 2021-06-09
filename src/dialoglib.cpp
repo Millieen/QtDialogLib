@@ -14,7 +14,7 @@ static QApplication* libApp = NULL;
 static int argc = 1;
 static char* argv[] = {"", NULL};
 
-DialogLibErroCode WINAPI Initialize(const char* resourcefilename)
+int WINAPI Initialize(const char* resourcefilename)
 {
     //check application
     libApp = qApp;
@@ -53,7 +53,7 @@ DialogLibErroCode WINAPI Initialize(const char* resourcefilename)
     return UI_SUCCESSED;
 }
 
-DialogLibErroCode WINAPI Finalize()
+int WINAPI Finalize()
 {
     if(m_resourcefilename.isEmpty())
     {
@@ -68,6 +68,9 @@ DialogLibErroCode WINAPI Finalize()
 
 int WINAPI ShowMessageDialog(const char *title, const char *message)
 {
-    MessageDialog msgdlg(title, message, MessageDialog::ShowMessage);
+    qDebug() << "input title = "<<title<<", message = "<< message;
+    QString msgstr = QString::fromUtf8(message);
+    qDebug() << "utf8 message = "<< msgstr;
+    MessageDialog msgdlg(title, msgstr, MessageDialog::ShowMessage);
     return msgdlg.exec();
 }

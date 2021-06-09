@@ -9,6 +9,8 @@ TEMPLATE = lib
 
 DEFINES += DYNAMIC_LIBRARY
 
+TARGET = DialogLib
+
 INCLUDEPATH += $$_PRO_FILE_PWD_/../include
 
 SOURCES += $$_PRO_FILE_PWD_/../src/dialoglib.cpp \

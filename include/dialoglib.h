@@ -16,10 +16,10 @@ enum DialogLibErroCode{
 #ifdef __cplusplus
 extern "C"  {
 #endif
-DialogLibErroCode WINAPI Initialize(const char* resourcefilename = NULL);
-DialogLibErroCode WINAPI Finalize();
+    int WINAPI Initialize(const char* resourcefilename = NULL);
+    int WINAPI Finalize();
 
-int WINAPI ShowMessageDialog(const char* title = NULL, const char* message = NULL);
+    int WINAPI ShowMessageDialog(const char* title = NULL, const char* message = NULL);
 
 #ifdef __cplusplus
 }

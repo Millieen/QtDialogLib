@@ -19,13 +19,10 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../static/release/ -lstatic
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../static/debug/ -lstatic
-else:unix: LIBS += -L$$OUT_PWD/../static/ -lstatic
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../dynamic/release/ -lDialogLib
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../dynamic/debug/ -lDialogLib
+else:unix: LIBS += -L$$OUT_PWD/../dynamic/ -lDialogLib
 
 INCLUDEPATH += $$PWD/../include
-DEPENDPATH += $$PWD/../static
+DEPENDPATH += $$PWD/../dynamic
 
-win32:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../static/release/static.lib
-else:win32:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../static/debug/static.lib
-else:unix: PRE_TARGETDEPS += $$OUT_PWD/../static/libstatic.a
