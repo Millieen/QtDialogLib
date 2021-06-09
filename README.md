@@ -6,4 +6,7 @@
 - 纯C引用示例：testforc  
 - Qt引用示例：testforqt  
 - Java调用示例：testforJNA  
--- 注意native库需要跟jdk的平台、位数保持一致。且要把Qt依赖库一并放进来（如果系统没有自带Qt）
+-- 注意native库需要跟jdk的平台、位数保持一致。且要把Qt依赖库一并放进来（如果系统没有自带Qt）  
+
+
+### 欢迎提交Pull Request，有用的话请给个Star
